@@ -6,6 +6,8 @@ sam1 = sys.argv[1]
 sam2 = sys.argv[2]
 
 #Check genomes are the same
+line = sam1.readline()
+if line.startswith("@"):
 
 #Parse map/unmapped
 for F in [sam1, sam2]:
