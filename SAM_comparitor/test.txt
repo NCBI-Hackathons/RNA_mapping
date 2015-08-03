@@ -63,6 +63,7 @@ print "Percent uniquely mapping reads:"
 for F in [sam1, sam2]:
 	with open(F) as f:
 		not_unique = 0
+		lastName = ""
 
 		while True:
 			line = f.readline()
@@ -83,7 +84,6 @@ for F in [sam1, sam2]:
 		output[F]["unique"] = unique
 
 
-# Uniquely mapping reads
 # Compare mapping behavior between programs, and between chromosomes.
 # Generate simulated SRA data
 # pcnt multimap
