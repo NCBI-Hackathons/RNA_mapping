@@ -73,7 +73,10 @@ for F in [sam1, sam2]:
 				name = line.split()[0]
 				if name != lastName:
 					currPos = f.tell()
-					nextName = f.readline().split()[0]
+					nextName = f.readline()
+					if nextName == "":
+						break
+					nextName = nextName.split()[0]
 					if name == nextName:
 						not_unique += 1
 					f.seek(currPos)
