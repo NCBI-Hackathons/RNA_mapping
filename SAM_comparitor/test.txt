@@ -2,23 +2,27 @@
 
 import sys
 
-sam1 = open(sys.argv[1])
-sam2 = open(sys.argv[2])
+sam1 = sys.argv[1]
+sam2 = sys.argv[2]
 
 #Check genomes are the same
 
 #Parse map/unmapped
-unmapped = 0
-count    = 0
+for F in [sam1, sam2]:
+	with open(F) as f:
+		unmapped = 0
+		count    = 0
 
-while True:
-	line = sam1.readline()
-	if line = "":
-		break
-	if not line.startswith("@"):
-		flag = int(line.split()[1])
-		if flag & 4:
-			unmapped += 1
-		count += 1
+		while True:
+			line = f.readline()
+			if line = "":
+				break
+			if not line.startswith("@"):
+				flag = int(line.split()[1])
+				if flag & 4:
+					unmapped += 1
+				count += 1
+		pcnt_unmapped = float(unmapped)/count
+		print "Percent unmapped:"
+		print F + ":\t%f %d/%d" % (pcnt_unmapped, unmapped, count)
 
-pcnt_unmapped = float(unmapped)/count
