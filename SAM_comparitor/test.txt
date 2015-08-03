@@ -1,0 +1,72 @@
+#!/usr/bin/env python
+
+import sys
+
+sam1 = sys.argv[1]
+sam2 = sys.argv[2]
+
+output = {sam1: {}, sam2: {}}
+
+#Check genomes are the same
+line = sam1.readline()
+if line.startswith("@"):
+
+#Check SAM files are sorted by read name
+
+#Parse map/unmapped reads in each file.
+print "Percent unmapped:"
+for F in [sam1, sam2]:
+	with open(F) as f:
+		unmapped = 0
+		count    = 0
+		primary  = 0
+
+		while True:
+			line = f.readline()
+			if line == "":
+				break
+			if not line.startswith("@"):
+				flag = int(line.split()[1])
+				if flag & 4:
+					unmapped += 1
+				if not flag & 256:
+					primary += 1
+				count += 1
+	
+	pcnt_unmapped = float(unmapped)/primary
+	print F + ":\t%f %d/%d" % (pcnt_unmapped, unmapped, primary)
+	output[F]["count"] = count
+	output[F]["unmapped"] = unmapped
+	output[F]["primary"] = primary
+
+#Count % of uniquely mapping reads -- will require the SAM file to be sorted by read name.
+print "Percent uniquely mapping reads:"
+for F in [sam1, sam2]:
+	with open(F) as f:
+		not_unique = 0
+
+		while True:
+			line = f.readline()
+			if line == "":
+				break
+			if not line.startswith("@"):
+				name = line.split()[0]
+				if name != lastName:
+					currPos = f.tell()
+					nextName = f.readline().split()[0]
+					if name == nextName:
+						not_unique += 1
+					f.seek(currPos)
+				lastName = name
+		unique = primary - not_unique
+		pcnt_unique = float(unique)/primary
+		print F + ":\t%f %d/%d" % (pcnt_unique, unique, primary)
+		output[F]["unique"] = unique
+
+
+# Uniquely mapping reads
+# Compare mapping behavior between programs, and between chromosomes.
+# Generate simulated SRA data
+# pcnt multimap
+# % map to "known" exons
+
