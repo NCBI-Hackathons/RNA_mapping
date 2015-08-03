@@ -8,8 +8,27 @@ sam2 = sys.argv[2]
 output = {sam1: {}, sam2: {}}
 
 #Check genomes are the same
-line = sam1.readline()
-if line.startswith("@"):
+f1= open(sam1)
+f2= open(sam2)
+
+
+leng_1 = 0
+leng_2 = 0
+for line_1 in f1:
+	if "@SQ" in line_1:
+		seq1_length = line_1.split()[2]
+		leng_1 = int(seq1_length.split(":")[1])
+		break
+for line_2 in f2:
+	if "@SQ" in line_2:
+		seq2_length = line_2.split()[2]
+		leng_2 = int(seq2_length.split(":")[1])
+		break
+if  leng_1 != leng_2:
+	print("These SAM files appear to be from different references")
+	quit()
+else:
+	print("Both SAM files appear to have used the same reference for alignment")
 
 #Check SAM files are sorted by read name
 
