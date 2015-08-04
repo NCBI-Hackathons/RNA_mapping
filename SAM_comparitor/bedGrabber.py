@@ -6,6 +6,8 @@ import subprocess
 inBed = sys.argv[1]
 n = len(sys.argv)
 
+text_only = True
+
 f = open(inBed)
 f.readline()
 
@@ -19,7 +21,7 @@ for line in f:
 	reads = []
 
 	fields = line.strip().split(",")
-	chrm   = fields[1]
+	chrm   = fields[1][1:-1]
 	start  = fields[2]
 	end    = fields[3]
 
@@ -86,35 +88,35 @@ for line in f:
 	print reads
 
 	################################################################################
+	if not text_only:
+		import matplotlib.pyplot as plt
 
-	import matplotlib.pyplot as plt
+		k = n-2
 
-	k = n-2
+		plt.figure()
+		for i in range(k):
+			l=-1
+			for j in range(k):
+				if i == j :
+					plt.subplot( k, k, (i)*k + (j+1) )
+					plt.plot(0,0)
+					# Summary stuff goes here
+				elif i != j:
+					l+=1
+					plt.subplot( 2*k, k, 2*i*k + (j+1))
+					#plt.pie([unmapped[i][l], len(reads[i][l])],autopct='%1.1f%%')
+					um = float(unmapped[i][l])
+					tot = um + len(reads[i][l])
+					if tot == 0:
+						tot = 1
 
-	plt.figure()
-	for i in range(k):
-		l=-1
-		for j in range(k):
-			if i == j :
-				plt.subplot( k, k, (i)*k + (j+1) )
-				plt.plot(0,0)
-				# Summary stuff goes here
-			elif i != j:
-				l+=1
-				plt.subplot( 2*k, k, 2*i*k + (j+1))
-				#plt.pie([unmapped[i][l], len(reads[i][l])],autopct='%1.1f%%')
-				um = float(unmapped[i][l])
-				tot = um + len(reads[i][l])
-				if tot == 0:
-					tot = 1
+					plt.barh(0,1,1,color="blue")
+					plt.barh(0,um/tot,1,color="orange")
 
-				plt.barh(0,1,1,color="blue")
-				plt.barh(0,um/tot,1,color="orange")
+					plt.subplot( 2*k, k, 2*i*k + (j+1) + k)
+					if len(mapped[i][l]) != 0:
+						plt.hist(mapped[i][l])
 
-				plt.subplot( 2*k, k, 2*i*k + (j+1) + k)
-				if len(mapped[i][l]) != 0:
-					plt.hist(mapped[i][l])
-
-	plt.savefig("comp%d.png" % img_count)
-	plt.close()
+		plt.savefig("comp%d.png" % img_count)
+		plt.close()
 
