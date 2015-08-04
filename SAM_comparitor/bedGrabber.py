@@ -7,17 +7,21 @@ inBed = sys.argv[1]
 n = len(sys.argv)
 
 f = open(inBed)
+f.readline()
 
 # For interesting regions checks where each read maps in the other aligners' outputs
+img_count = 0
 print "starting analysis"
 for line in f:
+	img_count += 1
 	mapped = []
 	unmapped = []
+	reads = []
 
-	fields = line.strip().split()
-	chrm   = fields[0]
-	start  = fields[1]
-	end    = fields[2]
+	fields = line.strip().split(",")
+	chrm   = fields[1]
+	start  = fields[2]
+	end    = fields[3]
 
 	#Grab the reads that are mapped to the given regions
 	print "Obtaining reads for region"
@@ -27,15 +31,17 @@ for line in f:
 			subprocess.call("wc -l tmp%d" % i, shell=True)
 
 	#For each bam file
-	for i in range(2,n-1):
+	for i in range(2,n):
 		mapped.append([])
+		reads.append([])
 		unmapped.append([])
 		with open("tmp%d" % i) as g:
-			for j in range(i+1,n):
+			for j in range(2,n):
 				g.seek(0)
 				if i != j:
 					print "Comparing file", i-1, "vs. file", j-1
 					mapped[-1].append([])
+					reads[-1].append([])
 					unmapped[-1].append(0)
 					# For each read within the region of bam file i:
 					for line2 in g:
@@ -67,21 +73,48 @@ for line in f:
 						inside  = oc
 						if um:
 							pass
-							#if j == 4:
 							#print "Unmapped"
 						else:
 							mapped[-1][-1].append(float(inside)/float(lc))
+							reads[-1][-1].append(lc)
 							#print mapped[-1][-1]
-				 
 
+	subprocess.call("rm tmp*", shell=True)
 
-#subprocess.call("rm tmp*", shell=True)
+	print mapped
+	print unmapped
+	print reads
 
-print mapped
+	################################################################################
 
-print unmapped
+	import matplotlib.pyplot as plt
 
-print n
-#for bami in mapped:
-#	for bamii in bami:
-#		print bamii
+	k = n-2
+
+	plt.figure()
+	for i in range(k):
+		l=-1
+		for j in range(k):
+			if i == j :
+				plt.subplot( k, k, (i)*k + (j+1) )
+				plt.plot(0,0)
+				# Summary stuff goes here
+			elif i != j:
+				l+=1
+				plt.subplot( 2*k, k, 2*i*k + (j+1))
+				#plt.pie([unmapped[i][l], len(reads[i][l])],autopct='%1.1f%%')
+				um = float(unmapped[i][l])
+				tot = um + len(reads[i][l])
+				if tot == 0:
+					tot = 1
+
+				plt.barh(0,1,1,color="blue")
+				plt.barh(0,um/tot,1,color="orange")
+
+				plt.subplot( 2*k, k, 2*i*k + (j+1) + k)
+				if len(mapped[i][l]) != 0:
+					plt.hist(mapped[i][l])
+
+	plt.savefig("comp%d.png" % img_count)
+	plt.close()
+
