@@ -5,18 +5,18 @@ files. The csv should be a file output by CSAW containing regions in which the
 .bam files show statistically different peaks. 
 
 ##STEP ONE:
-SAM_comparitor calculates some summary statistics for each bam file, including  
-the total number of reads contained, the total number of alignments (can be more  
-than the number of reads if reads align multiple times), the proportion of  
-reads that map uniquely (only once), and the proportion of reads which are  
+SAM_comparitor calculates some summary statistics for each bam file, including 
+the total number of reads contained, the total number of alignments (can be more 
+than the number of reads if reads align multiple times), the proportion of 
+reads that map uniquely (only once), and the proportion of reads which are 
 unmapped. 
 
 ##STEP TWO:
 For each region identified in the csv, provides text-based tables displaying the 
 results for pairwise comparisons of the .bam files. This includes the number of 
 reads in the identified region in one .bam file which are unmapped in the other. 
-In addition, the number and location of mapping partners in the other .bam are  
-analyzed for each mapping read, and the median values are reported. The location  
+In addition, the number and location of mapping partners in the other .bam are 
+analyzed for each mapping read, and the median values are reported. The location 
 metric is simply the ration of mapping partners which fall within the identified 
 region in the partner .bam file, out of all mapping partners in that file. 
 
@@ -24,9 +24,9 @@ region in the partner .bam file, out of all mapping partners in that file.
 Include information about read quality (based on CIGAR strings -- perfect mapping,
 short matches, indels, etc). 
 Use annotation file (.gff) to look at where these alternate mappings are:
-	- pseudo genes
-	- repetitive regions
-	- alternative exon splicing sites?
+- pseudo genes
+- repetitive regions
+- alternative exon splicing sites?
 
 ##*NOTE:*
 You can look at the behavior of reads in your favorite gene in the following way:
