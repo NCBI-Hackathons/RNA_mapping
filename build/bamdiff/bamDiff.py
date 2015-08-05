@@ -314,7 +314,7 @@ while csv_count < num_regions:
 							if rChrom not in regions:
 								regions[rChrom] = []
 								if len(regions[rChrom]) > 0:
-									for i, (rSt, rEnd) in enumerate(regions[rChrom]):
+									for i, (rSt, rEnd, c) in enumerate(regions[rChrom]):
 										nSt = rSt - buff
 										nEnd = nEnd + buff
 										if rPos > nSt and rPos < nEnd:
