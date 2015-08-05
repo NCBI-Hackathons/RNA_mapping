@@ -1,6 +1,6 @@
 
 
-![](https://github.com/AFDennis/RNAseqEducationalEnvironment/blob/master/Desktop/RNAmappermatchup.png?raw=true)
+![](https://github.com/DCGenomics/ngs_education_hackathon_v002/blob/master/images/RNAmappermatchup.png)
 
 ## Welcome to the educational RNA-seq wiki! 
 
