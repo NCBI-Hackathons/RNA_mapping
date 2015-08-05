@@ -32,12 +32,6 @@ Use annotation file (.gff) to look at where these alternate mappings are:
 	- repetitive regions
 	- alternative exon splicing sites?
 
-** Include command line options to simplify/expand output.
-** Allow options for specifying how many regions in the csv to analyze (use 
-   head or something).
-** Allow to pick reads in the region, and let you see WHERE those reads are 
-   mapping in the other file.
-
 ################################################################################
 
 *NOTE:
@@ -48,25 +42,36 @@ You can look at the behavior of reads in your favorite gene in the following way
 		- index,"chrom name",start,stop
 
 ################################################################################
-
-summary
-print summaries for each
-
-simple
-only unmapped
-
-default
-unmapped + where mapping to
-
-verbose
-everything
-
-annotation
-add annotations for reads and/or regions
-
 """
 
-usage = "\nUsage: %s [OPTIONS] [-n int] [-o outputFile] regions.csv file1.bam file2.bam [file3.bam ...]"
+usage = """
+\nUsage: %s [OPTIONS] [-n int] [-o outputFile] regions.csv file1.bam file2.bam [file3.bam ...]
+
+-h, --help					Display options and more info about bamDiff
+
+-s, --simple				Displays only the table reporting the number of 
+							unmapped reads.
+-S, --summarize				Displays only summary statistics for each of the bam
+							files.
+-v, --verbose				Displays summary statistics, tables for unmapped, 
+							map counts, and location info, as well as most
+							mapped regions.
+							DEFAULT VIEW BEHAVIOR: Unmapped tables, most mapped
+							regions.
+
+-n, --numRegions	int 	Allows the user to specify the number of regions in
+							the csv to be examined.
+-p, --p-value		float	Sets a p-value threshold. All regions in the csv
+							file will a more significant (lower) p-value will be
+							examined.
+
+-a, --annotate		file 	Not yet functional. In the future will allow you to 
+							examine the regions most mapped to and extract the
+							annotations in the gtf/gff file.
+-o, --output 		string	Not yet functional. In the future will allow you to 
+							designate an output file to store output.
+"""
+
 
 import sys
 import subprocess
@@ -91,7 +96,7 @@ annotation = False
 
 options,remainder = getopt.gnu_getopt(
 										sys.argv[1:], 
-										"o:n:p:vsSah", 
+										"o:n:p:a:vsSh", 
 										[
 											'verbose', 
 											'simple',
@@ -99,7 +104,7 @@ options,remainder = getopt.gnu_getopt(
 											'numRegions=',
 											'output=',
 											'help',
-											'annotate',
+											'annotate=',
 											'p-value='
 											])
 
@@ -122,7 +127,7 @@ for opt, arg in options:
 	elif opt in ('-h', '--help'):
 		help = True
 	elif opt in ('-a', '--annotate'):
-		annotation = True
+		annotation = arg
 	elif opt in ('-p', '--p-value'):
 		pThresh = float(arg)
 		num_regions = 10**100
