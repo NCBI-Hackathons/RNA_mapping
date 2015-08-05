@@ -59,6 +59,8 @@ usage = """
 							DEFAULT VIEW BEHAVIOR: Unmapped tables, most mapped
 							regions.
 
+-o, --output 		string	Specify rootname for output files. Otherwise, results
+							will print to standard out.
 -n, --numRegions	int 	Allows the user to specify the number of regions in
 							the csv to be examined.
 -p, --p-value		float	Sets a p-value threshold. All regions in the csv
@@ -68,8 +70,6 @@ usage = """
 -a, --annotate		file 	Not yet functional. In the future will allow you to 
 							examine the regions most mapped to and extract the
 							annotations in the gtf/gff file.
--o, --output 		string	Not yet functional. In the future will allow you to 
-							designate an output file to store output.
 """
 
 
@@ -186,6 +186,8 @@ for bam in bams:
 ################################################################################
 
 if summary or verbose:
+	if f_out:
+		sys.stdout = open("%s.summary" % f_out, "wb")
 	print "\nSummary statistics:"
 	for i in range(k):
 		f_name = bams[i]
@@ -235,6 +237,9 @@ if summary or verbose:
 #img_count = 0
 
 csv_count = 0
+
+if f_out:
+	sys.stdout = open("%s.results" % f_out, "wb")
 
 while csv_count < num_regions:
 	csv_count += 1
