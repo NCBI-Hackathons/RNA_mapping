@@ -216,9 +216,12 @@ if summary or verbose:
 						f.seek(currPos)
 					lastName = name
 
-				unique = primary - not_unique
-				pcnt_unique = float(unique)/primary*100
-				pcnt_um = float(unmapped)/primary*100
+				if not primary == 0:
+					unique = primary - not_unique
+					pcnt_unique = float(unique)/primary*100
+					pcnt_um = float(unmapped)/primary*100
+				else:
+					unique = pcnt_unique = pcnt_um = 0
 
 		print f_name
 		print "    Total Number of reads:   %d" % (primary)
