@@ -60,6 +60,10 @@ DEFAULT VIEW BEHAVIOR: Unmapped tables, most mapped
 regions.
 
 
+```-o, --output```
+__*string*__	Specify rootname for output files. Otherwise, results 
+will print to standard out.
+
 ```-n, --numRegions```
 __*int*__ 	Allows the user to specify the number of regions in
 the csv to be examined.
@@ -75,6 +79,3 @@ __*file*__ 	Not yet functional. In the future will allow you to
 examine the regions most mapped to and extract the
 annotations in the gtf/gff file.
 
-```-o, --output```
-__*string*__	Not yet functional. In the future will allow you to 
-designate an output file to store output.
