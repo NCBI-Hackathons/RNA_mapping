@@ -2,7 +2,7 @@
 
 intro = """
 ################################################################################
-#                               SAM_COMPARITOR                                 #
+#                                   bamDiff                                    #
 ################################################################################
 This takes as input a comma separated value (csv) file and two or more .bam 
 files. The csv should be a file output by CSAW containing regions in which the 
