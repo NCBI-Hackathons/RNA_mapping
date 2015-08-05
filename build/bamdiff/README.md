@@ -1,7 +1,7 @@
 #bamDiff
 
 This takes as input a comma separated value (csv) file and two or more .bam 
-files. The csv should be a file output by CSAW containing regions in which the 
+files. The csv should be a file output by [runCsaw.R](../csaw/runCsaw.R) containing regions in which the 
 .bam files show statistically different peaks. 
 
 ###STEP ONE:
@@ -37,7 +37,7 @@ You can look at the behavior of reads in your favorite gene in the following way
 
 --------------------------------------------------------------------------------
 
-```Usage: %s [OPTIONS] [-n int] [-o outputFile] regions.csv file1.bam file2.bam [file3.bam ...]```
+```Usage: bamDiff [OPTIONS] [-n int] [-o outputFile] regions.csv file1.bam file2.bam [file3.bam ...]```
 
 
 ```-h, --help```
