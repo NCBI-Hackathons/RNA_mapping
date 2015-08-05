@@ -12,4 +12,4 @@
 
 #### Then this is the tutorial for you!  [Please proceed to our wiki](https://github.com/DCGenomics/ngs_education_hackathon_v002/wiki)
 
-#### Just interested in comparing two .bam files?  Check out [bamdiff](https://github.com/DCGenomics/ngs_education_hackathon_v002/tree/master/build/bamdiff)
+#### *Just interested in comparing two or more .bam files?  Check out [bamdiff](https://github.com/DCGenomics/ngs_education_hackathon_v002/tree/master/build/bamdiff)*
