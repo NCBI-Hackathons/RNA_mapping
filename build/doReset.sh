@@ -14,6 +14,9 @@ cd /home/ubuntu/genome
 rm -r chr20*.*
 rm Log.out
 
+cd /home/ubuntu
+rm -r ncbi
+
 cd /home/ubuntu/hisat
 rm hisat.*
 

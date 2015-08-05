@@ -1,7 +1,7 @@
 #bamDiff
 
 This takes as input a comma separated value (csv) file and two or more .bam 
-files. The csv should be a file output by [runCsaw.R](../csaw/runCsaw.R) containing regions in which the 
+files. The csv should be a file output by [runCsaw.R](../csaw/runCsaw.R) (e.g. column 2 seqid, column 3 start, column 4 stop, column -1 p-value) containing regions in which the 
 .bam files show statistically different peaks. 
 
 ###STEP ONE:
