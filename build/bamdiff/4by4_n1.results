@@ -1,0 +1,114 @@
+File key:
+#	NAME
+1	../../hisat/cached/hisat.sorted.bam
+2	../../star/cached/star.sorted.bam
+3	../../blastmapper/cached/blastmapper.sorted.bam
+4	../../bwa/cached/bwa.sorted.bam
+
+Region 20:7889001-7890000
+================================================
+                |       vs. file
+File	# Reads	|1	2	3	4
+----------------+-------------------------------
+Proportion of unmapped reads
+----------------+-------------------------------
+1	4	| -	0.00	0.00	0.00	
+2	1036	| 0.99	-	0.00	0.02	
+3	3755	| 1.00	0.99	-	0.00	
+4	0	| 0.00	0.00	0.00	-	
+----------------+-------------------------------
+Median # times each read mapped
+----------------+-------------------------------
+1	4	| -	7.0	1.0	1.0	
+2	1036	| 1.0	-	2.0	1.0	
+3	3755	| -1.0	1.0	-	1.0	
+4	0	| -1.0	-1.0	-1.0	-	
+----------------+-------------------------------
+Median proportion times each read mapped inside region
+----------------+-------------------------------
+1	4	| -	0.0	0.0	0.0	
+2	1036	| 0.0	-	0.7	0.0	
+3	3755	| -1.0	0.0	-	1.0	
+4	0	| -1.0	-1.0	-1.0	-	
+================================================
+
+Regions where most identified reads are mapping in second bam file
+Reads in region from file hisat.sorted.bam mapped to file star.sorted.bam at:
+20	34563297	34563299	4
+20	34635605	34635607	4
+20	34639131	34639133	4
+20	43554810	43554812	4
+20	34472105	34472106	3
+20	34620541	34620542	3
+20	43356459	43356460	3
+
+Reads in region from file hisat.sorted.bam mapped to file blastmapper.sorted.bam at:
+20	7886360	7886363	4
+
+Reads in region from file hisat.sorted.bam mapped to file bwa.sorted.bam at:
+20	21236724	21236725	3
+20	7886360	7886361	1
+
+Reads in region from file star.sorted.bam mapped to file hisat.sorted.bam at:
+20	7987382	7987383	4
+20	14808875	14808876	1
+20	7956794	7956795	1
+20	17413469	17413470	1
+20	8108928	8108929	1
+20	8595745	8595746	1
+
+Reads in region from file star.sorted.bam mapped to file blastmapper.sorted.bam at:
+20	7830998	7834701	790
+20	7830998	7834701	775
+20	7830998	7834701	510
+20	7806391	7811755	77
+20	7806391	7811755	62
+20	7807468	7812451	56
+20	3506437	3506438	27
+20	7870462	7870640	24
+20	7817754	7818870	21
+
+Reads in region from file star.sorted.bam mapped to file bwa.sorted.bam at:
+20	7831018	7833696	516
+20	7831172	7834718	234
+20	36551774	36551775	10
+20	7807954	7808206	10
+20	25608547	25608548	10
+20	49099534	49099535	9
+20	5237419	5237420	8
+20	33500107	33500108	8
+20	50766775	50766776	8
+
+Reads in region from file blastmapper.sorted.bam mapped to file hisat.sorted.bam at:
+
+Reads in region from file blastmapper.sorted.bam mapped to file star.sorted.bam at:
+20	42151346	42151347	10
+20	46148179	46148180	6
+20	8057568	8057569	4
+20	5631861	5631862	3
+20	35094446	35094447	2
+20	36989702	36989703	2
+20	38481571	38481572	2
+20	52227417	52227418	2
+20	50006163	50006164	2
+
+Reads in region from file blastmapper.sorted.bam mapped to file bwa.sorted.bam at:
+20	7889110	7889742	3592
+20	7746437	7746441	20
+20	43486556	43486557	19
+20	7296180	7296181	19
+20	19065904	19065905	17
+20	7194134	7194761	15
+20	7542040	7542042	11
+20	7577590	7577595	5
+20	7643886	7644206	5
+
+Reads in region from file bwa.sorted.bam mapped to file hisat.sorted.bam at:
+
+Reads in region from file bwa.sorted.bam mapped to file star.sorted.bam at:
+
+Reads in region from file bwa.sorted.bam mapped to file blastmapper.sorted.bam at:
+
+real	92m37.019s
+user	86m21.310s
+sys	1m39.473s

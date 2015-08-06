@@ -1,0 +1,26 @@
+
+Summary statistics:
+../../hisat/cached/hisat.sorted.bam
+    Total Number of reads:   3299113
+    Number of alignments:    3371896
+    Uniquely mapping reads:  98.6 % (3253802/3299113)
+    Unmapped reads:          0.0 % (0/3299113)
+
+../../star/cached/star.sorted.bam
+    Total Number of reads:   9555940
+    Number of alignments:    11170728
+    Uniquely mapping reads:  90.4 % (8637572/9555940)
+    Unmapped reads:          0.0 % (0/9555940)
+
+../../blastmapper/cached/blastmapper.sorted.bam
+    Total Number of reads:   16620730
+    Number of alignments:    16620730
+    Uniquely mapping reads:  91.1 % (15134748/16620730)
+    Unmapped reads:          0.0 % (0/16620730)
+
+../../bwa/cached/bwa.sorted.bam
+    Total Number of reads:   14081856
+    Number of alignments:    14081856
+    Uniquely mapping reads:  95.4 % (13440933/14081856)
+    Unmapped reads:          0.0 % (0/14081856)
+
