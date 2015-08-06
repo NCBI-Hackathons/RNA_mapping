@@ -175,7 +175,8 @@ def median(l):
     return med
 
 ################################################################################
-
+if f_out:
+    sys.stdout = open("%s.results" % f_out, "wb")
 print "File key:"
 print "#\tNAME"
 i = 0
@@ -239,7 +240,7 @@ if summary or verbose:
 csv_count = 0
 
 if f_out:
-    sys.stdout = open("%s.results" % f_out, "wb")
+    sys.stdout = open("%s.results" % f_out, "ab")
 
 while csv_count < num_regions:
     csv_count += 1
