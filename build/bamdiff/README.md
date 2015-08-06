@@ -40,19 +40,19 @@ You can look at the behavior of reads in your favorite gene in the following way
 ```Usage: bamDiff [OPTIONS] [-n int] [-o outputFile] regions.csv file1.bam file2.bam [file3.bam ...]```
 
 
-```-h, --help```
+```-h, --help```  
 Display options and more info about bamDiff
 
 
-```-s, --simple```
+```-s, --simple```  
 Displays only the table reporting the number of 
 unmapped reads.
 
-```-S, --summarize```
+```-S, --summarize```  
 Displays only summary statistics for each of the bam
 files.
 
-```-v, --verbose```
+```-v, --verbose```  
 Displays summary statistics, tables for unmapped, 
 map counts, and location info, as well as most
 mapped regions.
@@ -60,21 +60,21 @@ DEFAULT VIEW BEHAVIOR: Unmapped tables, most mapped
 regions.
 
 
-```-o, --output```
+```-o, --output```  
 __*string*__	Specify rootname for output files. Otherwise, results 
 will print to standard out.
 
-```-n, --numRegions```
+```-n, --numRegions```  
 __*int*__ 	Allows the user to specify the number of regions in
 the csv to be examined.
 
-```-p, --p-value```
+```-p, --p-value```  
 __*float*__	Sets a p-value threshold. All regions in the csv
 file will a more significant (lower) p-value will be
 examined.
 
 
-```-a, --annotate```
+```-a, --annotate```  
 __*file*__ 	Not yet functional. In the future will allow you to 
 examine the regions most mapped to and extract the
 annotations in the gtf/gff file.
