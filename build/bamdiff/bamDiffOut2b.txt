@@ -1,0 +1,39 @@
+$ time ./bamDiff.py cached/demo.csv ../hisat/cached/hisat.sorted.bam ../star/cached/star.sorted.bam
+
+File key:
+#	NAME
+1	../hisat/cached/hisat.sorted.bam
+2	../star/cached/star.sorted.bam
+
+Region 20:23086001-23087000
+================================
+                |       vs. file
+File	# Reads	|1	2
+----------------+---------------
+Proportion of unmapped reads
+----------------+---------------
+1	38	| -	0.00	
+2	691	| 0.91	-	
+----------------+---------------
+================================
+
+Regions where most identified reads are mapping in second bam file
+Reads in region from file hisat.sorted.bam mapped to file star.sorted.bam at:
+20	23085904	23086405	30
+20	22991078	22991134	6
+20	28739075	28739076	3
+20	22873121	22873122	2
+20	23082462	23082463	2
+20	22117181	22117182	2
+
+Reads in region from file star.sorted.bam mapped to file hisat.sorted.bam at:
+20	23085202	23086405	31
+20	22991078	22991133	6
+20	23369643	23369644	4
+20	1433379 	1433380 	2
+20	23082462	23082463	1
+20	12586648	12586649	1
+20	21891800	21891801	1
+20	10161535	10161536	1
+20	23618933	23618934	1
+
