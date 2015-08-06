@@ -256,8 +256,13 @@ while csv_count < num_regions:
     chrm   = fields[1][1:-1]
     start  = fields[2]
     end    = fields[3]
-    p      = float(fields[-1])
-
+    p      = fields[-1]
+    if "e" in p:
+    	base, exp = p.split("e")
+    	p = float(base)*(10**(float(exp)))
+    else:
+    	p = float(p)
+    	
     if p > pThresh:
         break
 
