@@ -18,6 +18,13 @@ data = windowCounts(args,width=1000,bin=TRUE, filter=10)
 abundances <- aveLogCPM(asDGEList(data))
 keep <- abundances > aveLogCPM(10, lib.size=mean(data$totals))
 summary(keep)
+
+#this section makes sure that the TxDb names match the names in the bam files
+#if you're using the whole genome you would have to change the names of the 
+#sequences prior to mapping
+
+#for whole genome uncomment line 27 and comment out line 28
+##row.good.names <- rowRanges(data)
 row.good.names <- renameSeqlevels(rowRanges(data), "chr20")
 hexons <- exons(TxDb.Hsapiens.UCSC.hg38.knownGene)
 suppressWarnings(keep <- overlapsAny(row.good.names, hexons))
