@@ -22,4 +22,4 @@ cd /home/ubuntu/csaw
 Rscript runCsaw.R ../blastmapper/blastmapper.sorted.bam ../hisat/hisat.sorted.bam ../star/star.sorted.bam ../bwa/bwa.sorted.bam
 
 cd /home/ubuntu/bamdiff
-./bamDiff.py ../csaw/csaw.bam.results.csv ../hisat/hisat.sorted.bam ../star/star.sorted.bam > hisatVSstar
+./bamDiff.py ../csaw/csaw.bam.results.csv ../hisat/hisat.sorted.bam ../star/star.sorted.bam
