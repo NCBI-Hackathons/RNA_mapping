@@ -79,4 +79,4 @@ __*file*__ 	Not yet functional. In the future will allow you to
 examine the regions most mapped to and extract the
 annotations in the gtf/gff file.
 
-To see example usage and output, go to [our wiki tutorial](https://github.com/DCGenomics/RNA_mapping/wiki/7.-Compare-alignments-with-bamDiff).
+To see example usage and output, go to [our wiki tutorial](https://github.com/NCBI-Hackathons/RNA_mapping/wiki/7.-Compare-alignments-with-bamDiff).
