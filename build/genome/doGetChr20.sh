@@ -7,6 +7,7 @@
 
 wget -O GRCh38.p4.gff.gz ftp.ncbi.nlm.nih.gov/genomes/all/GCF_000001405.30_GRCh38.p4/GCF_000001405.30_GRCh38.p4_genomic.gff.gz
 gunzip GRCh38.p4.gff.gz
+grep "^NC_000020.11" GRCh38.p4.gff > GRCh38.p4.chr20.gff 
 
 wget -O chr20.fa.gz ftp.ncbi.nlm.nih.gov/genomes/all/GCF_000001405.30_GRCh38.p4/GCF_000001405.30_GRCh38.p4_assembly_structure/Primary_Assembly/assembled_chromosomes/FASTA/chr20.fna.gz
 gunzip chr20.fa.gz
