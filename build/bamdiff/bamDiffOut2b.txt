@@ -1,39 +1,65 @@
-$ time ./bamDiff.py cached/demo.csv ../hisat/cached/hisat.sorted.bam ../star/cached/star.sorted.bam
-
+$ time ./bamDiff.py --verbose ../csaw/cached/csaw.bam.results.csv ../hisat/cached/hisat.sorted.bam ../star/cached/star.sorted.bam
 File key:
 #	NAME
 1	../hisat/cached/hisat.sorted.bam
 2	../star/cached/star.sorted.bam
 
-Region 20:23086001-23087000
+Summary statistics:
+[bam_sort_core] merging from 2 files...
+../hisat/cached/hisat.sorted.bam
+    Total Number of reads:   3299113
+    Number of alignments:    3371896
+    Uniquely mapping reads:  98.6 % (3253802/3299113)
+    Unmapped reads:          0.0 % (0/3299113)
+
+[bam_sort_core] merging from 5 files...
+../star/cached/star.sorted.bam
+    Total Number of reads:   9555940
+    Number of alignments:    11170728
+    Uniquely mapping reads:  90.4 % (8637572/9555940)
+    Unmapped reads:          0.0 % (0/9555940)
+
+
+Region 20:7889001-7890000
 ================================
                 |       vs. file
 File	# Reads	|1	2
 ----------------+---------------
 Proportion of unmapped reads
 ----------------+---------------
-1	38	| -	0.00	
-2	691	| 0.91	-	
+1	4	| -	0.00	
+2	1036	| 0.99	-	
 ----------------+---------------
+Median # times each read mapped
+----------------+---------------
+1	4	| -	7.0	
+2	1036	| 1.0	-	
+----------------+---------------
+Median proportion times each read mapped inside region
+----------------+---------------
+1	4	| -	0.0	
+2	1036	| 0.0	-	
 ================================
 
 Regions where most identified reads are mapping in second bam file
 Reads in region from file hisat.sorted.bam mapped to file star.sorted.bam at:
-20	23085904	23086405	30
-20	22991078	22991134	6
-20	28739075	28739076	3
-20	22873121	22873122	2
-20	23082462	23082463	2
-20	22117181	22117182	2
+20	34563297	34563299	4
+20	34635605	34635607	4
+20	34639131	34639133	4
+20	43554810	43554812	4
+20	34472105	34472106	3
+20	34620541	34620542	3
+20	43356459	43356460	3
 
 Reads in region from file star.sorted.bam mapped to file hisat.sorted.bam at:
-20	23085202	23086405	31
-20	22991078	22991133	6
-20	23369643	23369644	4
-20	1433379 	1433380 	2
-20	23082462	23082463	1
-20	12586648	12586649	1
-20	21891800	21891801	1
-20	10161535	10161536	1
-20	23618933	23618934	1
+20	7987382	7987383	4
+20	14808875	14808876	1
+20	7956794	7956795	1
+20	17413469	17413470	1
+20	8108928	8108929	1
+20	8595745	8595746	1
 
+
+real	15m6.332s
+user	13m43.010s
+sys	0m20.046s
