@@ -72,12 +72,15 @@ usage = """
                             annotations in the gtf/gff file.
 """
 
+################################################################################
+# Imports
 
 import sys
 import subprocess
 import getopt
 
 ################################################################################
+# Set parameters at defaults
 
 summary = False
 simple  = False
@@ -92,7 +95,10 @@ pThresh    = 10**10
 help       = False
 annotation = False
 
+text_only = True
+
 ################################################################################
+# Parse command line arguments
 
 options,remainder = getopt.gnu_getopt(
                                         sys.argv[1:], 
@@ -154,18 +160,11 @@ bams  = remainder[1:]
 bam_names = [x.split("/")[-1] for x in bams]
 k = len(remainder) - 1
 
-################################################################################
-
-n = len(sys.argv)
-
-text_only = True
-
-bed = open(inBed)
-bed.readline()
 
 ################################################################################
-
+# Define functions
 def median(l):
+    """Takes a list of numbers and returns the median value."""
     List = sorted(l)
     i = len(l)
     if i == 0:
@@ -175,6 +174,8 @@ def median(l):
     return med
 
 ################################################################################
+# Generate a legend for identifying filenames in the results
+
 if f_out:
     sys.stdout = open("%s.results" % f_out, "wb")
 print "File key:"
@@ -185,6 +186,11 @@ for bam in bams:
     print "%d\t%s" % (i, bams[i-1])
 
 ################################################################################
+# Return summary statistics for each of the given bam files. Write to `file.summary`
+## Total number of reads
+## Total number of alignments
+## % of reads which mapped uniquely
+## % of reads which are unmapped
 
 if summary or verbose:
     if f_out:
@@ -237,6 +243,9 @@ if summary or verbose:
 # For interesting regions checks where each read maps in the other aligners' outputs
 #img_count = 0
 
+csv = open(inBed)
+csv.readline()
+
 csv_count = 0
 
 if f_out:
@@ -244,7 +253,7 @@ if f_out:
 
 while csv_count < num_regions:
     csv_count += 1
-    line = bed.readline()
+    line = csv.readline()
     if line == "":
         break
     #img_count += 1
@@ -365,6 +374,8 @@ while csv_count < num_regions:
 
     ############################################################
     # REPORT RESULTS
+    
+    ## Write header for results
     if not summary:
         print ""
         print "Region %s:%s-%s" % (chrm, start, end)
@@ -372,6 +383,9 @@ while csv_count < num_regions:
         print " "*16 + "|" + " "*7 + "vs. file"
         print "File\t# Reads\t|"+"\t".join([str(x) for x in range(1,k+1)])
         print "-"*16 + "+" + "-"*(8*(k)-1)
+    
+    ## For the reads in the region of interest in each file, report the 
+    ## proportion which did not map to each of the other files.
     if simple or default or verbose:
         print "Proportion of unmapped reads"
         print "-"*16 + "+" + "-"*(8*(k)-1)
@@ -390,6 +404,11 @@ while csv_count < num_regions:
                     print "-\t",
             print ""
         print "-"*16 + "+" + "-"*(8*(k)-1)
+        
+    ## For the reads in mapped to the region of interest in each file, report the median 
+    ## number of times those reads mapped to the other files.
+    ## Also report the median proportion of times each read in the region in one file
+    ## mapped to the same region in each of the other files.
     if verbose:
         print "Median # times each read mapped" # include ranges here as well?
         print "-"*16 + "+" + "-"*(8*(k)-1)
@@ -415,6 +434,9 @@ while csv_count < num_regions:
                 else: print "-\t",
             print ""
     print "="*(16+8*(k))
+    
+    ## Report where the reads from the region of interest from one file
+    ## are mapping to in the other files.
     if verbose or default:
         print "\nRegions where most identified reads are mapping in second bam file"
         for i in range(k):
