@@ -98,6 +98,11 @@ WORKDIR /opt/STAR/source
 RUN make STAR
 ENV PATH "$PATH:/opt/STAR/source/"
 
+WORKDIR /opt/
+RUN wget ftp://ftp.ncbi.nlm.nih.gov/blast/executables/magicblast/1.3.0/ncbi-magicblast-1.3.0-x64-linux.tar.gz
+RUN tar xvzf ncbi-magicblast-1.3.0-x64-linux.tar.gz
+WORKDIR /opt/ncbi-magicblast-1.3.0
+ENV PATH "$PATH:/opt/ncbi-magicblast-1.3.0/bin/"
+
 WORKDIR /
 RUN git clone https://github.com/stevetsa/RNA_mapping.git
-
