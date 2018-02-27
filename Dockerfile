@@ -99,5 +99,5 @@ RUN make STAR
 ENV PATH "$PATH:/opt/STAR/source/"
 
 WORKDIR /
-RUN git clone https://github.com/NCBI-Hackathons/RNA_mapping.git
+RUN git clone https://github.com/stevetsa/RNA_mapping.git
 
