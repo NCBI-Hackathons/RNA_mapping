@@ -41,6 +41,7 @@ cd /RNA_mapping/build/magicblast
 date
 echo "start csaw..."
 cd /RNA_mapping/build/csaw
+#Rscript runCsaw_dependencies.R
 Rscript runCsaw.R ../magicblast/magicblast.sorted.bam ../hisat/hisat.sorted.bam ../star/star.sorted.bam ../bwa/bwa.sorted.bam
 
 #cd /home/ubuntu/bamdiff

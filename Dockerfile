@@ -17,13 +17,17 @@ RUN apt-get update && apt-get install --yes \
  autoconf \
  git \
  perl \
+ r-base \
+ python \
  libbz2-dev \
  liblzma-dev \
  apt-utils \
  libz-dev \
  ncurses-dev \
  zlib1g-dev \
- libcurl3 
+ libcurl3 \
+ libcurl4-openssl-dev \
+ libxml2-dev
 
 WORKDIR /opt
 RUN git clone https://github.com/samtools/htslib.git
@@ -45,33 +49,11 @@ RUN make
 RUN make install
 ENV PATH "$PATH:/opt/samtools/"
 
-#WORKDIR /opt
-#RUN git clone git://github.com/samtools/bcftools.git
-#WORKDIR /opt/bcftools
-#RUN autoheader
-#RUN autoconf
-#RUN ./configure
-#RUN make
-#RUN make install
-#ENV PATH "$PATH:/opt/bcftools/"
-
 WORKDIR /opt
 RUN git clone https://github.com/lh3/bwa.git
 WORKDIR /opt/bwa
 RUN make
-#RUN cp bwa /usr/local/bin
 ENV PATH "$PATH:/opt/bwa/"
-#./bwa index ref.fa
-#./bwa mem ref.fa read-se.fq.gz | gzip -3 > aln-se.sam.gz
-#./bwa mem ref.fa read1.fq read2.fq | gzip -3 > aln-pe.sam.gz
-
-RUN apt-get install -y r-base python
-
-#WORKDIR /opt/
-#RUN git clone git://github.com/statgen/bamUtil.git
-#WORKDIR /opt/bamUtil
-#RUN make cloneLib
-#RUN make all
 
 WORKDIR /opt/
 RUN wget ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.7.1+-x64-linux.tar.gz
