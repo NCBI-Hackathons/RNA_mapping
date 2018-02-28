@@ -1,6 +1,3 @@
-## bamdiff blastmapper bwa hisat hisat-build STAR samtools 
-## makeblastdb samtools magicblast fastq-dump
-
 FROM ubuntu:latest
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 MAINTAINER Steve Tsang <mylagimail2004@yahoo.com>
