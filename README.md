@@ -21,6 +21,17 @@ Follow [instructions](https://www.docker.com/docker-mac) to install Docker for y
 docker pull stevetsa/rna_mapping
 docker run -it stevetsa/rna_mapping
 
-At the root prompt inside the container - 
+At the root prompt inside the container, execute the script - 
 /RNA_mapping/build/doAll.sh
+```
+#### Singularity
+Run this image on the NIH biowulf cluster
+
+```
+sinteractive --cpus-per-task=16 --mem=10g
+singularity shell docker://stevetsa/rna_mapping
+ 
+inside Singularity container, execute the script - 
+/RNA_mapping/build/doAll.sh
+
 ```
