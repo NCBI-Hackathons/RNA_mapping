@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: ubuntu:latest
+From: stevetsa/rna_mapping:latest
 
 %runscript
 
