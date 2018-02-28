@@ -11,7 +11,7 @@
 #### *Just interested in comparing two or more .bam files?  Check out [bamdiff](https://github.com/NCBI-Hackathons/RNA_mapping/tree/master/build/bamdiff)*
 
 #### Docker
-A Docker container is available for this project.  For a detailed description of docker, please refer to this [overview.](https://www.docker.com/what-docker)
+A Docker image is available for this project.  For a detailed description of docker, please refer to this [overview.](https://www.docker.com/what-docker)
 
 ##### Install Docker
 Follow [instructions](https://www.docker.com/docker-mac) to install Docker for your environment.
