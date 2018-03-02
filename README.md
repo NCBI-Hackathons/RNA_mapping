@@ -29,6 +29,7 @@ Run this image on the NIH biowulf cluster
 
 ```
 sinteractive --cpus-per-task=16 --mem=10g
+module load singularity
 singularity shell docker://stevetsa/rna_mapping
  
 inside Singularity container, execute the script - 
