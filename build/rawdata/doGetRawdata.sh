@@ -7,5 +7,5 @@
 # 100 ng of Poly-A-RNA
 # 115359773 reads (2 x 101bp Illumina paired end)
 
-fastq-dump --split-files SRR1153470
+/opt/sratoolkit.2.9.0-ubuntu64/bin/fastq-dump --split-files SRR1153470
 

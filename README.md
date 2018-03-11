@@ -9,3 +9,30 @@
 #### Then this is the tutorial for you!  [Please proceed to our wiki](https://github.com/NCBI-Hackathons/RNA_mapping/wiki)
 
 #### *Just interested in comparing two or more .bam files?  Check out [bamdiff](https://github.com/NCBI-Hackathons/RNA_mapping/tree/master/build/bamdiff)*
+
+#### Docker
+A Docker image is available for this project.  For a detailed description of docker, please refer to this [overview.](https://www.docker.com/what-docker)
+
+##### Install Docker
+Follow [instructions](https://www.docker.com/docker-mac) to install Docker for your environment.
+
+##### Get a pre-built image from DockerHub and run the server
+```
+docker pull stevetsa/rna_mapping
+docker run -it stevetsa/rna_mapping
+
+At the root prompt inside the container, execute the script - 
+/RNA_mapping/build/doAll.sh
+```
+#### Singularity
+Run this image on the NIH biowulf cluster
+
+```
+sinteractive --cpus-per-task=16 --mem=10g
+module load singularity
+singularity shell docker://stevetsa/rna_mapping
+ 
+inside Singularity container, execute the script - 
+/RNA_mapping/build/doAll.sh
+
+```
